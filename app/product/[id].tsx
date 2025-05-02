@@ -27,7 +27,7 @@ const Details = () => {
               resizeMode="contain"
             />
             <Text className="text-sm font-normal mb-2 text-typography-700">
-             {product.category}
+             {product.category};
             </Text>
             <VStack className="mb-6">
               <Heading size="md" className="mb-4">
@@ -35,6 +35,9 @@ const Details = () => {
               </Heading>
               
               <Text className="mt-2">RS : {product.price}</Text>
+              <Text className="text-sm font-normal mb-2 text-typography-700">
+             {product.description};
+            </Text>
             </VStack>
             <Box className="flex-col sm:flex-row">
               <Button className="px-4 py-2 mr-0 mb-3 bg-slate-600 sm:mr-3 sm:mb-0 sm:flex-1">
