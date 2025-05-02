@@ -1,32 +1,19 @@
-import { View, FlatList, Text } from 'react-native'
-import React from 'react'
-import data from "../assets/products.json"
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { RenderList } from "../components/RenderList"
-
+import { View, Text, SafeAreaView, FlatList } from "react-native";
+import React from "react";
+import data from "../assets/products.json";
+import RenderItems from "../components/RenderList";
 const index = () => {
-
-  
-
   return (
-    <SafeAreaView className='bg-gray-200'>
-      <View>
-      <FlatList 
-      
-      data={data.products}
+    <SafeAreaView>
+      <FlatList
+      className="bg-gray-200"
       numColumns={2}
-      contentContainerClassName='gap-2'
-      columnWrapperClassName='gap-2'
-      keyExtractor={(item) => item.id.toString()}
-      renderItem={({item}) => <RenderList  product = {item}/>
-        
-    }
-      />
-      </View>
-      
-    
+        data={data.products}
+        renderItem={({ item }) => (
+        <RenderItems list={item} />)}
+      ></FlatList>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default index
+export default index;
