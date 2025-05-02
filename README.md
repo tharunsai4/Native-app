@@ -1,36 +1,78 @@
-# Welcome to your Expo app 👋
+# Welcome to your Native app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-gluestack-app`](https://www.npmjs.com/package/create-gluestack).
 
-## Get started
+This project is made by using ReactNative, Tailwind for styling and Gluestack UI for the inbuilt components.
 
-1. Start the app
 
-   ```bash
-    npm run start
-   ```
+I have listed some information below regarding the installation and setup the Tailwind and Gluestack.
 
-In the output, you'll find options to open the app in a
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Firstly, use npx create-expo-app@latest for creating a React Native Application.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Then, used nativewind to install the tailwind css into the project by using NativeWind, They are two ways to setup tailwind css into the project, Manual and Automation.
 
-## Learn more
+For the Automation use this command  npx create-expo-stack@latest --nativewind and give the project name after latest word.
 
-To learn more about developing your project with Expo, look at the following resources:
+For the Manual setup they are list of the commands and steps should be followed mentioning below,
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-- [Nativewind](https://www.nativewind.dev/): Nativewind is a utility-first library for building native apps with Tailwind CSS.
-- [Gluestack](https://gluestack.io/): Gluestack is a component library for building native apps with Tailwind CSS.
+1. Use npm install nativewind tailwindcss@^3.4.17 react-native-reanimated@3.16.2 react-native-safe-area-context for installing the tailwind latest version, reanimated and safe area context.
 
-## Join the community
+2. Then use npx tailwindcss init to create a tailwind config.js file in the root of the application.
 
-Join our community of developers creating universal apps.
+3. Paste this /** @type {import('tailwindcss').Config} */
+module.exports = {
+  // NOTE: Update this to include the paths to all of your component files.
+  content: ["./app/**/*.{js,jsx,ts,tsx}"],
+  presets: [require("nativewind/preset")],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+in the config file note that ./app is able to use the tailwind if we have any folder that contains the components add them in the content, sp that the tailwind will be applied on the new components.
 
-- [gluestack-ui on GitHub](https://github.com/gluestack/gluestack-ui): View our open source ui library and contribute.
-- [gluestack community](https://discord.com/channels/1050761204852858900/1336392784168484914): Chat with gluestack users and ask questions.
+4. Create a global.cc file in the root and paste this @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+5. Create a babel.config.js in the root of the application
+and paste this module.exports = function (api) {
+  api.cache(true);
+  return {
+    presets: [
+      ["babel-preset-expo", { jsxImportSource: "nativewind" }],
+      "nativewind/babel",
+    ],
+  };
+
+};
+
+6. Add metro.config.js in the root of the application and paste this
+ const { getDefaultConfig } = require("expo/metro-config");
+const { withNativeWind } = require('nativewind/metro');
+
+const config = getDefaultConfig(__dirname)
+
+module.exports = withNativeWind(config, { input: './global.css' })
+
+7. In the App folder go to the _layouts and import "./global.css"
+
+
+This are the steps for manual setup of tailwind css in the react native.
+
+
+
+##### Gluestack UI Setup
+
+
+To setup the Gluistack UI in the applications use the gluestack npm create gluestack@latest
+
+This will quickly install all the components to the the application.
+
+This components will be stored in this path 
+
+component/ui/____.
+
+to use the componets in the snippet just import the required component from the local componnets folder.
+
+
