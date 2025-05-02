@@ -8,7 +8,7 @@ import { VStack } from "@/components/ui/vstack"
 
 export const RenderList = ({product}) =>{
     return(
-        <Card className="p-5 rounded-lg max-w-[360px] m-3">
+        <Card className="p-5 rounded-lg max-w-[360px]  flex-1">
       <Image
         source={{
           uri: product.thumbnail,
@@ -24,7 +24,7 @@ export const RenderList = ({product}) =>{
             {product.title}
         </Heading>
         <Text size="sm">
-          {product.description}
+         Rs {product.price}
         </Text>
       </VStack>
       <Box className="flex-col sm:flex-row">
