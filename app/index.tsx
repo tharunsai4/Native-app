@@ -9,10 +9,14 @@ const index = () => {
   
 
   return (
-    <SafeAreaView>
+    <SafeAreaView className='bg-gray-200'>
       <View>
       <FlatList 
+      
       data={data.products}
+      numColumns={2}
+      contentContainerClassName='gap-2'
+      columnWrapperClassName='gap-2'
       keyExtractor={(item) => item.id.toString()}
       renderItem={({item}) => <RenderList  product = {item}/>
         
