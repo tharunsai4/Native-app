@@ -8,7 +8,7 @@ import { VStack } from "@/components/ui/vstack";
 import { Link } from "expo-router";
 const RenderItems = ({ list }) => {
   return (
-    <Link href={`/product/${list.id}`} className="flex-1 m-1">
+    
       <Card className="p-5 rounded-lg max-w-[360px] bg-white ">
         <Image
           source={{
@@ -28,7 +28,7 @@ const RenderItems = ({ list }) => {
 
         <Text className="mt-2">RS : {list.price}</Text>
       </Card>
-    </Link>
+    
   );
 };
 
