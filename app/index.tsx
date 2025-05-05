@@ -1,4 +1,5 @@
-import { View, Text, SafeAreaView, FlatList, TextInput } from "react-native";
+import { View, Text, SafeAreaView, FlatList, TextInput, TouchableOpacity } from "react-native";
+import { Pressable } from "react-native";
 import React, { useState } from "react";
 import data from "../assets/products.json";
 import RenderItems from "../components/RenderList";
@@ -14,7 +15,7 @@ const index = () => {
   const [refreshing, setRefreshing] = useState(false);
   const [search, setSearch] = useState("");
   const [sortOption,setSortOption] = useState("default")
-  
+  const [showPicker,setShowPicker] = useState(false)
 
   const fetchData = async () => {
     const response = await fetch(
@@ -49,16 +50,23 @@ const index = () => {
         value={search}
         onChangeText={setSearch}
       />
-
+    <TouchableOpacity onPress={() =>setShowPicker((prev) =>!prev)}
+      className="flex items-center justify-center  p-[10px] bg-white">
+      <Text>
+        {showPicker ? "hide" : "Show Filters"}
+      </Text>
+    </TouchableOpacity>
       <View >
-        <Picker 
+      
+       { showPicker && (<Picker 
         style={{  margin:3}}
         selectedValue={sortOption}
         onValueChange={(value) =>setSortOption(value)}>
           <Picker.Item label="Sort: Default" value="default" />
           <Picker.Item label = "Price:Low to High" value="price-asc" />
           <Picker.Item label = "Price: High to Low" value="price-desc" />
-        </Picker>
+        </Picker>)}
+       
       </View>
       <FlatList
         key={numColumns}
