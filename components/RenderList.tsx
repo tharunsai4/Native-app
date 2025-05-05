@@ -11,21 +11,21 @@ const RenderItems = ({ list }) => {
   const [loading,setLoading] = useState(false);
   const [error,setError] = useState("");
   return (
-    <Link href={`/product/${list.id}`} className="flex-1 m-1">
-      <Card className="p-5 rounded-lg max-w-[360px] bg-white ">
+    <Link href={`/product/${list.id}`} className="flex-1 m-[1px]">
+      <Card className="p-5 rounded-lg max-w-[360px] bg-[rgba(0,0,0,0)] ">
         <Image
           source={{
             uri: list.thumbnail,
           }}
-          className="mb-6 h-[240px] w-full rounded-md aspect-[4/3]"
+          className="mb-[6px] h-[240px] w-full rounded-md aspect-[4/3]"
           alt="image"
           resizeMode="contain"
         />
-        <Text className="text-sm font-normal mb-2 text-typography-700">
+        <Text className="text-sm font-normal mb-[2px] text-typography-700">
           {list.category}
         </Text>
 
-        <Heading size="md" className="mb-4">
+        <Heading size="md" className="mb-[4px]">
           {list.title}
         </Heading>
 

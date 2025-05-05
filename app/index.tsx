@@ -44,14 +44,15 @@ const index = () => {
   return (
     <SafeAreaView>
       <TextInput
-        className="border-gray-500s bg-white p-4 m-2"
+        className="border-gray-500s bg-white p-[25px]"
         placeholder="search here"
         value={search}
         onChangeText={setSearch}
       />
 
-      <View>
-        <Picker
+      <View >
+        <Picker 
+        style={{  margin:3}}
         selectedValue={sortOption}
         onValueChange={(value) =>setSortOption(value)}>
           <Picker.Item label="Sort: Default" value="default" />
@@ -61,7 +62,7 @@ const index = () => {
       </View>
       <FlatList
         key={numColumns}
-        className="bg-gray-200"
+        className="bg-gray-200 w-[calc(100%-2rem)]"
         keyExtractor={(item) => item.id.toString()}
         numColumns={numColumns}
         data={sortedData}
