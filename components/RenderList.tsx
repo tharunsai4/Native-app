@@ -4,11 +4,14 @@ import { Card } from "@/components/ui/card";
 import { Heading } from "@/components/ui/heading";
 import { Image } from "@/components/ui/image";
 import { Text } from "@/components/ui/text";
-import { VStack } from "@/components/ui/vstack";
 import { Link } from "expo-router";
+import { useState } from "react";
 const RenderItems = ({ list }) => {
+
+  const [loading,setLoading] = useState(false);
+  const [error,setError] = useState("");
   return (
-    
+    <Link href={`/product/${list.id}`} className="flex-1 m-1">
       <Card className="p-5 rounded-lg max-w-[360px] bg-white ">
         <Image
           source={{
@@ -28,7 +31,7 @@ const RenderItems = ({ list }) => {
 
         <Text className="mt-2">RS : {list.price}</Text>
       </Card>
-    
+    </Link>
   );
 };
 
